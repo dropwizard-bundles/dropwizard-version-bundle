@@ -2,6 +2,9 @@
 
 A [Dropwizard][dropwizard] bundle that exposes the version of your application via the admin port.
 
+[![Build Status](https://secure.travis-ci.org/bbeck/dropwizard-version-bundle.png?branch=master)]
+(http://travis-ci.org/bbeck/dropwizard-version-bundle)
+
 
 ## Getting Started
 
@@ -41,6 +44,7 @@ something like the following would show you your application's version.
 ```bash
 curl localhost:8081/version
 ```
+
 
 ## Customizing version supplier
 
