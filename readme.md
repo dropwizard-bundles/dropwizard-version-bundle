@@ -46,7 +46,7 @@ curl localhost:8081/version
 ```
 
 
-## Customizing version supplier
+## Customizing the version supplier
 
 By default the bundle only comes with a single version supplier `MavenVersionSupplier` that will
 discover the version information for a particular maven artifact by reading the `pom.properties`
