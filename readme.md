@@ -2,8 +2,8 @@
 
 A [Dropwizard][dropwizard] bundle that exposes the version of your application via the admin port.
 
-[![Build Status](https://secure.travis-ci.org/bbeck/dropwizard-version-bundle.png?branch=master)]
-(http://travis-ci.org/bbeck/dropwizard-version-bundle)
+[![Build Status](https://secure.travis-ci.org/dropwizard-bundles/dropwizard-version-bundle.png?branch=master)]
+(http://travis-ci.org/dropwizard-bundles/dropwizard-version-bundle)
 
 
 ## Getting Started
@@ -12,9 +12,9 @@ Just add this maven dependency to get started:
 
 ```xml
 <dependency>
-  <groupId>org.isomorphism.dropwizard</groupId>
+  <groupId>io.dropwizard-bundles</groupId>
   <artifactId>dropwizard-version-bundle</artifactId>
-  <version>0.1.0</version>
+  <version>0.8.1</version>
 </dependency>
 ```
 
@@ -24,7 +24,7 @@ Add the bundle to your environment using your choice of version supplier:
 public class MyApplication extends Application<Configuration> {
   @Override
   public void initialize(Bootstrap<Configuration> bootstrap) {
-    VersionSupplier supplier = new MavenVersionSupplier("group", "artifact");
+    VersionSupplier supplier = new MavenVersionSupplier("<YOUR GROUP>", "<YOUR ARTIFACT ID>");
     bootstrap.addBundle(new VersionBundle(supplier));
   }
 
