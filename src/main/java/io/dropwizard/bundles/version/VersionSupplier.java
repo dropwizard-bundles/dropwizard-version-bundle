@@ -1,4 +1,4 @@
-package org.isomorphism.dropwizard.version;
+package io.dropwizard.bundles.version;
 
 import com.google.common.base.Supplier;
 

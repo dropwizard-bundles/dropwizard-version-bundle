@@ -1,13 +1,13 @@
-package org.isomorphism.dropwizard.version.suppliers;
+package io.dropwizard.bundles.version.suppliers;
 
 import com.google.common.io.ByteSource;
 import com.google.common.io.Closeables;
 import com.google.common.io.Resources;
+import io.dropwizard.bundles.version.VersionSupplier;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
-import org.isomorphism.dropwizard.version.VersionSupplier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
