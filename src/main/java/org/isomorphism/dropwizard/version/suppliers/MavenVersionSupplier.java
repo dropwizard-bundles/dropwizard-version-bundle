@@ -3,20 +3,19 @@ package org.isomorphism.dropwizard.version.suppliers;
 import com.google.common.io.ByteSource;
 import com.google.common.io.Closeables;
 import com.google.common.io.Resources;
-import org.isomorphism.dropwizard.version.VersionSupplier;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
+import org.isomorphism.dropwizard.version.VersionSupplier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * A version number supplier that reads the pom.properties file that maven includes inside of
- * jars that it packages.
+ * A version number supplier that reads the pom.properties file that maven includes inside of jars
+ * that it packages.
  */
 public class MavenVersionSupplier implements VersionSupplier {
   private static final Logger LOG = LoggerFactory.getLogger(MavenVersionSupplier.class);
@@ -25,6 +24,13 @@ public class MavenVersionSupplier implements VersionSupplier {
   private final String artifact;
   private final String path;
 
+  /**
+   * Construct a MavenVersionSupplier that uses the specified group and artifact as the artifact
+   * whose version to report.
+   *
+   * @param group    The maven group of the main artifact.
+   * @param artifact The maven artifact id of the main artifact.
+   */
   public MavenVersionSupplier(String group, String artifact) {
     this.group = checkNotNull(group);
     this.artifact = checkNotNull(artifact);
@@ -42,7 +48,7 @@ public class MavenVersionSupplier implements VersionSupplier {
       source = Resources.asByteSource(url);
     } catch (IllegalArgumentException e) {
       LOG.warn("Unable to find maven pom.properties file: group:{}, artifact:{}, path:{}",
-        group, artifact, path, e);
+               group, artifact, path, e);
       return null;
     }
 
@@ -51,24 +57,24 @@ public class MavenVersionSupplier implements VersionSupplier {
       in = source.openBufferedStream();
     } catch (IOException e) {
       LOG.error("Unable to open maven pom.properties file: group:{}, artifact:{}, path:{}",
-        group, artifact, path, e);
+                group, artifact, path, e);
       return null;
     }
 
     String version;
     try {
-      Properties p = new Properties();
+      Properties props = new Properties();
       try {
-        p.load(in);
+        props.load(in);
       } catch (IOException e) {
         LOG.error("Error while loading maven pom.properties file: group:{}, artifact:{}, path:{}",
-          group, artifact, path, e);
+                  group, artifact, path, e);
         return null;
       }
 
-      version = p.getProperty("version");
+      version = props.getProperty("version");
       LOG.debug("Loaded the version for maven artifact: group:{}, artifact:{}, path:{}, version:{}",
-        group, artifact, path, version);
+                group, artifact, path, version);
     } finally {
       Closeables.closeQuietly(in);
     }
