@@ -1,7 +1,5 @@
 package io.dropwizard.bundles.version;
 
-import com.google.common.base.Supplier;
-import com.google.common.base.Suppliers;
 import io.dropwizard.Bundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -17,7 +15,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class VersionBundle implements Bundle {
   private static final String DEFAULT_URL = "/version";
 
-  private final Supplier<String> supplier;
+  private final VersionSupplier supplier;
   private final String url;
 
   /**
@@ -41,7 +39,7 @@ public class VersionBundle implements Bundle {
     checkNotNull(supplier);
     checkNotNull(url);
 
-    this.supplier = Suppliers.memoize(supplier);
+    this.supplier = supplier;
     this.url = url;
   }
 
@@ -52,7 +50,7 @@ public class VersionBundle implements Bundle {
 
   @Override
   public void run(Environment environment) {
-    VersionServlet servlet = new VersionServlet(supplier);
+    VersionServlet servlet = new VersionServlet(supplier, environment.getObjectMapper());
     environment.admin().addServlet("version", servlet).addMapping(url);
   }
 }
