@@ -1,9 +1,18 @@
 package io.dropwizard.bundles.version;
 
-import com.google.common.base.Supplier;
+import java.util.Map;
 
 /**
  * Supplier interface that provides an application's version number.
  */
-public interface VersionSupplier extends Supplier<String> {
+public interface VersionSupplier {
+  /**
+   * Return the application's version number.
+   */
+  String getApplicationVersion();
+
+  /**
+   * Return the version numbers of dependencies.
+   */
+  Map<String, String> getDependencyVersions();
 }

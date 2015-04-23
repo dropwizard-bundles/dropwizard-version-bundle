@@ -1,6 +1,7 @@
 # dropwizard-version-bundle
 
-A [Dropwizard][dropwizard] bundle that exposes the version of your application via the admin port.
+A [Dropwizard][dropwizard] bundle that exposes the version of your application as well as its
+dependencies via the admin port.
 
 [![Build Status](https://secure.travis-ci.org/dropwizard-bundles/dropwizard-version-bundle.png?branch=master)]
 (http://travis-ci.org/dropwizard-bundles/dropwizard-version-bundle)
@@ -14,7 +15,7 @@ Just add this maven dependency to get started:
 <dependency>
   <groupId>io.dropwizard-bundles</groupId>
   <artifactId>dropwizard-version-bundle</artifactId>
-  <version>0.8.1-1</version>
+  <version>0.8.1-2</version>
 </dependency>
 ```
 
@@ -36,7 +37,7 @@ public class MyApplication extends Application<Configuration> {
 ```
 
 Now you can access the the `/version` URL on the admin port of your application to see the version
-of your application.
+of your application as well as its dependencies.
 
 For example if your application were running on `localhost` with the admin server on port 8081 then
 something like the following would show you your application's version.
