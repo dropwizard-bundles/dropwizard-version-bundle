@@ -50,7 +50,7 @@ public class VersionBundle implements Bundle {
 
   @Override
   public void run(Environment environment) {
-    VersionServlet servlet = new VersionServlet(supplier);
+    VersionServlet servlet = new VersionServlet(supplier, environment.getObjectMapper());
     environment.admin().addServlet("version", servlet).addMapping(url);
   }
 }

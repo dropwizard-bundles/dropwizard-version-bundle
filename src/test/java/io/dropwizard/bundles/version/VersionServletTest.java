@@ -29,7 +29,7 @@ public class VersionServletTest {
 
   @Before
   public void setup() throws Exception {
-    tester.addServlet(new ServletHolder(new VersionServlet(supplier)), PATH);
+    tester.addServlet(new ServletHolder(new VersionServlet(supplier, OBJECT_MAPPER)), PATH);
     tester.start();
   }
 

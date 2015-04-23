@@ -32,12 +32,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * its results so that a recalculation doesn't happen on every request.</p>
  */
 class VersionServlet extends HttpServlet {
-  private static final ObjectMapper OBJECT_MAPPER = Jackson.newObjectMapper();
-
   private final VersionSupplier supplier;
+  private final ObjectMapper objectMapper;
 
-  VersionServlet(VersionSupplier supplier) {
+  VersionServlet(VersionSupplier supplier, ObjectMapper objectMapper) {
     this.supplier = checkNotNull(supplier);
+    this.objectMapper = checkNotNull(objectMapper);
   }
 
   @Override
@@ -68,7 +68,7 @@ class VersionServlet extends HttpServlet {
 
     ServletOutputStream out = resp.getOutputStream();
     try {
-      OBJECT_MAPPER.writeValue(out, response);
+      objectMapper.writeValue(out, response);
     } finally {
       Closeables.close(out, false);
     }
