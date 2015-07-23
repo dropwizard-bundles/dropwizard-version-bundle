@@ -10,7 +10,8 @@
 
   <groupId>io.dropwizard-bundles</groupId>
   <artifactId>dropwizard-version-bundle</artifactId>
-  <version>0.8.2-1-SNAPSHOT</version>  <!-- Make sure to keep this in sync with the dropwizard version below. -->
+  <!-- Make sure to keep this in sync with the dropwizard version below. -->
+  <version>0.8.2-1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>dropwizard-version-bundle</name>
@@ -42,7 +43,12 @@
       <name>Nate Bauernfeind</name>
       <url>http://github.com/nbauernfeind/</url>
     </developer>
-  </developers>
+    <developer>
+      <id>redarqas</id>
+      <name>Jamal CHAQOURI</name>
+      <url>http://github.com/redarqas/</url>
+    </developer>
+ </developers>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,7 +71,7 @@
           <target>1.7</target>
         </configuration>
       </plugin>
-
+      <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -95,7 +101,7 @@
           </execution>
         </executions>
       </plugin>
-
+      -->
       <!-- Release tags should be v<VERSION>. -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
