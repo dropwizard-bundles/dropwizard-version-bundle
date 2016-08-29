@@ -52,6 +52,7 @@
     <junit.version>4.12</junit.version>
     <mockito.version>1.10.17</mockito.version>
     <reflections.version>0.9.10</reflections.version>
+    <jetty.version>9.3.9.v20160517</jetty.version>
   </properties>
 
   <build>
@@ -141,6 +142,29 @@
           <artifactId>annotations</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+
+    <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-servlet</artifactId>
+        <version>${jetty.version}</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-servlet</artifactId>
+        <version>${jetty.version}</version>
+        <classifier>tests</classifier>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-http</artifactId>
+        <version>${jetty.version}</version>
+        <classifier>tests</classifier>
+        <scope>test</scope>
     </dependency>
 
     <!-- JUnit -->
