@@ -32,6 +32,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * its results so that a recalculation doesn't happen on every request.</p>
  */
 class VersionServlet extends HttpServlet {
+  private static final long serialVersionUID = 0L;
+
   private final VersionSupplier supplier;
   private final ObjectMapper objectMapper;
 
