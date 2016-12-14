@@ -15,7 +15,7 @@ Just add this maven dependency to get started:
 <dependency>
   <groupId>io.dropwizard-bundles</groupId>
   <artifactId>dropwizard-version-bundle</artifactId>
-  <version>0.9.2</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 
