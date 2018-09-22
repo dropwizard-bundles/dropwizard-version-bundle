@@ -36,6 +36,31 @@ public class MyApplication extends Application<Configuration> {
 }
 ```
 
+
+Or if you need access to your configuration in your supplier use the `ConfiguredVersionBundle` as follows:
+
+```java
+public class MyApplication extends Application<Configuration> {
+  @Override
+  public void initialize(Bootstrap<Configuration> bootstrap) {
+    bootstrap.addBundle(new ConfiguredVersionBundle<Configuration>()
+    {
+        @Override
+        public VersionSupplier provideSupplier(Configuration configuration)
+        {
+            return new MyConfiguredVersionSupplier(configuration);
+        }
+    });
+  }
+
+  @Override
+  public void run(Configuration cfg, Environment env) throws Exception {
+    // ...
+  }
+}
+```
+
+
 Now you can access the the `/version` URL on the admin port of your application to see the version
 of your application as well as its dependencies.
 
