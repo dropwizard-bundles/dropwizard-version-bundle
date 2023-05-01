@@ -2,7 +2,6 @@ package io.dropwizard.bundles.version;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Throwables;
 import com.google.common.collect.Maps;
 import io.dropwizard.jackson.Jackson;
 import java.io.IOException;
@@ -112,7 +111,7 @@ public class VersionServletTest {
       ByteBuffer responses = tester.getResponses(raw);
       response = HttpTester.parseResponse(responses);
     } catch (Exception e) {
-      throw Throwables.propagate(e);
+      throw new RuntimeException(e);
     }
 
     return response;
@@ -122,7 +121,7 @@ public class VersionServletTest {
     try {
       return OBJECT_MAPPER.readTree(s);
     } catch (IOException e) {
-      throw Throwables.propagate(e);
+      throw new RuntimeException(e);
     }
   }
 
